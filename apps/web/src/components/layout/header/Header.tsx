@@ -8,7 +8,6 @@ import { cn } from '@/lib/utils/cn'
 import { mainNav } from '@/config/navigation'
 import { NavigationMenu } from './NavigationMenu'
 import { MobileMenu } from './MobileMenu'
-import { ThemeToggle } from '@/components/ui/ThemeToggle'
 
 interface HeaderProps {
   transparent?: boolean
@@ -34,7 +33,7 @@ export function Header({ transparent = false }: HeaderProps) {
         className={cn(
           'fixed inset-x-0 top-0 z-50 transition-all duration-300',
           showSolid
-            ? 'bg-surface/95 shadow-sm backdrop-blur-md dark:bg-dark/95'
+            ? 'bg-surface/96 shadow-sm backdrop-blur-md border-b border-border'
             : 'bg-transparent'
         )}
         initial={{ y: -80 }}
@@ -51,7 +50,7 @@ export function Header({ transparent = false }: HeaderProps) {
             <span
               className={cn(
                 'transition-colors duration-300',
-                showSolid ? 'text-primary dark:text-white' : 'text-white'
+                showSolid ? 'text-primary' : 'text-white'
               )}
             >
               Jurerê
@@ -60,7 +59,7 @@ export function Header({ transparent = false }: HeaderProps) {
               className={cn(
                 'rounded px-1.5 py-0.5 text-sm font-bold transition-colors duration-300',
                 showSolid
-                  ? 'bg-accent text-white'
+                  ? 'bg-accent text-primary'
                   : 'bg-white/20 text-white backdrop-blur-sm'
               )}
             >
@@ -75,13 +74,12 @@ export function Header({ transparent = false }: HeaderProps) {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            <ThemeToggle />
-
             <Link
               href="/participar"
               className={cn(
-                'hidden rounded-full px-4 py-2 text-sm font-medium transition-all sm:block',
-                'bg-accent text-white hover:bg-accent-dark focus-visible:ring-2 focus-visible:ring-accent'
+                'hidden rounded-full px-4 py-2 text-sm font-semibold transition-all sm:block',
+                'bg-accent text-primary hover:bg-accent-dark hover:text-white',
+                'focus-visible:ring-2 focus-visible:ring-accent'
               )}
             >
               Participar
@@ -95,7 +93,7 @@ export function Header({ transparent = false }: HeaderProps) {
               className={cn(
                 'flex size-9 items-center justify-center rounded-md transition-colors lg:hidden',
                 showSolid
-                  ? 'text-text hover:bg-surface-alt dark:text-white'
+                  ? 'text-primary hover:bg-surface-alt'
                   : 'text-white hover:bg-white/10'
               )}
             >
@@ -105,7 +103,6 @@ export function Header({ transparent = false }: HeaderProps) {
         </div>
       </motion.header>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <MobileMenu

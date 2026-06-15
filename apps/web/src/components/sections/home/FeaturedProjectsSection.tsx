@@ -10,29 +10,23 @@ interface FeaturedProjectsSectionProps {
 
 export function FeaturedProjectsSection({ projects }: FeaturedProjectsSectionProps) {
   return (
-    <section
-      className="bg-surface-alt py-24 dark:bg-dark-surface"
-      aria-labelledby="projects-title"
-    >
+    <section className="bg-surface-alt py-24" aria-labelledby="projects-title">
       <div className="container-premium">
         <ScrollReveal className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-accent">
+            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-accent-text">
               Em ação
             </p>
-            <h2
-              id="projects-title"
-              className="font-display text-3xl font-bold text-text dark:text-white sm:text-4xl"
-            >
+            <h2 id="projects-title" className="font-display text-3xl font-bold text-primary sm:text-4xl">
               Projetos em destaque
             </h2>
           </div>
           <Link
             href="/projetos"
-            className="flex shrink-0 items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-accent-dark"
+            className="group flex shrink-0 items-center gap-1.5 text-sm font-medium text-accent-text transition-colors hover:text-accent-dark"
           >
             Ver todos os projetos
-            <ArrowRight className="size-4" />
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
           </Link>
         </ScrollReveal>
 

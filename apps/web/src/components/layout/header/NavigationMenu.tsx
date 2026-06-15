@@ -18,7 +18,7 @@ export function NavigationMenu({ items, transparent }: NavigationMenuProps) {
 
   const textClass = transparent
     ? 'text-white/90 hover:text-white'
-    : 'text-muted hover:text-text dark:text-slate-300 dark:hover:text-white'
+    : 'text-muted hover:text-primary'
 
   return (
     <ul className="flex items-center gap-1" role="menubar">
@@ -40,7 +40,7 @@ export function NavigationMenu({ items, transparent }: NavigationMenuProps) {
                   className={cn(
                     'flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors',
                     textClass,
-                    isActive && 'text-accent dark:text-accent'
+                    isActive && 'text-accent-text font-semibold'
                   )}
                 >
                   {item.label}
@@ -52,7 +52,7 @@ export function NavigationMenu({ items, transparent }: NavigationMenuProps) {
                 {isOpen && (
                   <div
                     role="menu"
-                    className="absolute left-0 top-full mt-1 min-w-[180px] rounded-xl border border-border bg-surface p-1 shadow-lg dark:bg-dark-surface dark:border-white/10"
+                    className="absolute left-0 top-full mt-1 min-w-[180px] rounded-xl border border-border bg-surface p-1 shadow-lg"
                   >
                     {item.children!.map((child) => (
                       <Link
@@ -62,8 +62,8 @@ export function NavigationMenu({ items, transparent }: NavigationMenuProps) {
                         onClick={() => setOpenItem(null)}
                         className={cn(
                           'block rounded-lg px-3 py-2 text-sm text-muted transition-colors',
-                          'hover:bg-surface-alt hover:text-text dark:hover:bg-white/5 dark:hover:text-white',
-                          pathname === child.href && 'text-accent font-medium'
+                          'hover:bg-surface-alt hover:text-primary',
+                          pathname === child.href && 'text-accent-text font-medium'
                         )}
                       >
                         {child.label}
@@ -79,7 +79,7 @@ export function NavigationMenu({ items, transparent }: NavigationMenuProps) {
                 className={cn(
                   'block rounded-md px-3 py-2 text-sm font-medium transition-colors',
                   textClass,
-                  isActive && 'text-accent dark:text-accent'
+                  isActive && 'text-accent-text font-semibold'
                 )}
               >
                 {item.label}

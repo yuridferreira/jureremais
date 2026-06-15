@@ -19,38 +19,32 @@ export function MobileMenu({ items, onClose }: MobileMenuProps) {
 
   return (
     <>
-      {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+        className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm"
       />
 
-      {/* Drawer */}
       <motion.div
         initial={{ x: '100%' }}
         animate={{ x: 0 }}
         exit={{ x: '100%' }}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className="fixed inset-y-0 right-0 z-50 flex w-80 max-w-full flex-col bg-surface dark:bg-dark-surface shadow-xl"
+        className="fixed inset-y-0 right-0 z-50 flex w-80 max-w-full flex-col bg-surface shadow-xl border-l border-border"
       >
-        {/* Header */}
-        <div className="flex items-center justify-between border-b border-border p-4 dark:border-white/10">
-          <span className="font-display font-bold text-primary dark:text-white">
-            Menu
-          </span>
+        <div className="flex items-center justify-between border-b border-border p-4">
+          <span className="font-display font-bold text-primary">Menu</span>
           <button
             onClick={onClose}
             aria-label="Fechar menu"
-            className="flex size-9 items-center justify-center rounded-md text-muted transition-colors hover:bg-surface-alt dark:hover:bg-white/10"
+            className="flex size-9 items-center justify-center rounded-md text-muted transition-colors hover:bg-surface-alt"
           >
             <X className="size-5" />
           </button>
         </div>
 
-        {/* Nav items */}
         <nav className="flex-1 overflow-y-auto p-4" aria-label="Menu mobile">
           <ul className="space-y-1">
             {items.map((item) => {
@@ -67,8 +61,8 @@ export function MobileMenu({ items, onClose }: MobileMenuProps) {
                         className={cn(
                           'flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                           isActive
-                            ? 'bg-accent/10 text-accent'
-                            : 'text-text hover:bg-surface-alt dark:text-white dark:hover:bg-white/5'
+                            ? 'bg-accent/15 text-accent-text'
+                            : 'text-primary hover:bg-surface-alt'
                         )}
                       >
                         {item.label}
@@ -77,7 +71,7 @@ export function MobileMenu({ items, onClose }: MobileMenuProps) {
                         />
                       </button>
                       {isOpen && (
-                        <ul className="ml-3 mt-1 space-y-1 border-l-2 border-border pl-3 dark:border-white/10">
+                        <ul className="ml-3 mt-1 space-y-1 border-l-2 border-border pl-3">
                           {item.children!.map((child) => (
                             <li key={child.href}>
                               <Link
@@ -86,8 +80,8 @@ export function MobileMenu({ items, onClose }: MobileMenuProps) {
                                 className={cn(
                                   'block rounded-md px-3 py-2 text-sm transition-colors',
                                   pathname === child.href
-                                    ? 'text-accent font-medium'
-                                    : 'text-muted hover:text-text dark:hover:text-white'
+                                    ? 'text-accent-text font-medium'
+                                    : 'text-muted hover:text-primary'
                                 )}
                               >
                                 {child.label}
@@ -104,8 +98,8 @@ export function MobileMenu({ items, onClose }: MobileMenuProps) {
                       className={cn(
                         'block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                         isActive
-                          ? 'bg-accent/10 text-accent'
-                          : 'text-text hover:bg-surface-alt dark:text-white dark:hover:bg-white/5'
+                          ? 'bg-accent/15 text-accent-text'
+                          : 'text-primary hover:bg-surface-alt'
                       )}
                     >
                       {item.label}
@@ -117,12 +111,11 @@ export function MobileMenu({ items, onClose }: MobileMenuProps) {
           </ul>
         </nav>
 
-        {/* CTA bottom */}
-        <div className="border-t border-border p-4 dark:border-white/10">
+        <div className="border-t border-border p-4">
           <Link
             href="/participar"
             onClick={onClose}
-            className="flex w-full items-center justify-center rounded-full bg-accent py-3 text-sm font-medium text-white transition-colors hover:bg-accent-dark"
+            className="flex w-full items-center justify-center rounded-full bg-accent py-3 text-sm font-semibold text-primary transition-colors hover:bg-accent-dark hover:text-white"
           >
             Participar do movimento
           </Link>
